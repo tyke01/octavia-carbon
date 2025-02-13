@@ -1,6 +1,7 @@
 "use client";
 
 import MaxWidthWrapper from "@/components/max-width-wrapper";
+import { SLIDES } from "@/constants/data";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,43 +10,10 @@ import { useRef, useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface Slide {
-  imageSrc?: string;
-  imageAlt?: string;
-  title: string;
-  description?: string;
-}
 
 const MissionZero = () => {
   const [currentSlide, setCurrentSlide] = useState(1);
-  const slides: Slide[] = [
-    {
-      imageSrc: "/machine.svg",
-      title: "The world's most versatile direct air capture technology",
-      description:
-        "Our plug-and-play electrochemical solution can efficiently recover historic CO₂ emissions anywhere with access to electricity.",
-    },
-    {
-      title: "Carbon that works for climate",
-      description:
-        "That CO₂ is then permanently removed or used to displace fossil carbons in products and processes.",
-    },
-    {
-      imageSrc: "/removal.png",
-      title: "Permanent removal",
-      description: "Locking historic CO2 emissions into rock underground",
-    },
-    {
-      imageSrc: "/building.png",
-      title: "Building material",
-      description: "Using atmospheric carbon to create urban carbon sinks",
-    },
-    {
-      imageSrc: "/fuel.png",
-      title: "E-fuels",
-      description: "Creating sustainable fuels from air instead of oil",
-    },
-  ];
+
 
   // Create a ref to hold all slide element references
   const slidesRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -85,7 +53,7 @@ const MissionZero = () => {
           </div>
 
           <div className="w-full md:w-4/5">
-            {slides.map((slide, index) => (
+            {SLIDES.map((slide, index) => (
               <div
                 key={index}
                 ref={(el) => {

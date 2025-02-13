@@ -40,3 +40,39 @@ export const PARTNERS = [
     path: "/partners/p10.png",
   },
 ];
+
+interface Slide {
+  imageSrc?: string;
+  imageAlt?: string;
+  title: string;
+  description?: string;
+}
+
+export const SLIDES: Slide[] = [
+  {
+    imageSrc: "/machine.svg",
+    title: "The world's most versatile direct air capture technology",
+    description:
+      "Our plug-and-play electrochemical solution can efficiently recover historic CO₂ emissions anywhere with access to electricity.",
+  },
+  {
+    title: "Carbon that works for climate",
+    description:
+      "That CO₂ is then permanently removed or used to displace fossil carbons in products and processes.",
+  },
+  {
+    imageSrc: "/removal.png",
+    title: "Permanent removal",
+    description: "Locking historic CO2 emissions into rock underground",
+  },
+  {
+    imageSrc: "/building.png",
+    title: "Building material",
+    description: "Using atmospheric carbon to create urban carbon sinks",
+  },
+  {
+    imageSrc: "/fuel.png",
+    title: "E-fuels",
+    description: "Creating sustainable fuels from air instead of oil",
+  },
+];
