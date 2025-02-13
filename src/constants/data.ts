@@ -76,3 +76,36 @@ export const SLIDES: Slide[] = [
     description: "Creating sustainable fuels from air instead of oil",
   },
 ];
+
+export const PROJECTS = [
+  {
+    badge: "Canada",
+    heading: "Deep Sky",
+    subHeading: "Eliminating CO2",
+    body: "Scaling a world leading carbon removal hub in Canada that turns CO2 into rocks",
+    amount: "250tCO2",
+    date: "2024",
+    status: "Sceduled delivery",
+    image: "/projects/deep-sky.jpg",
+  },
+  {
+    badge: "UK",
+    heading: "Sheffield University",
+    subHeading: "Creating pioneer fuels",
+    body: "Pioneering a UK ecosystem for sustainable aviation fuel made from air.",
+    amount: "50tCO2",
+    date: "2023",
+    status: "Delivered",
+    image: "/projects/sheffield.jpg",
+  },
+  {
+    badge: "UK",
+    heading: "O.C.O Technology",
+    subHeading: "Building with air",
+    body: "Developing pathways to turn CO2 into carbon-negative building materials",
+    amount: "250tCO2",
+    date: "2024",
+    status: "Sceduled delivery",
+    image: "/projects/oco.jpg",
+  },
+];
