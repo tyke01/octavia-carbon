@@ -4,6 +4,10 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Link from "next/link";
+
+import { ArrowRight } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -64,7 +68,7 @@ const Hero = () => {
       {/* Content Container */}
       <div
         ref={contentRef}
-        className="relative z-10 flex flex-col items-center justify-center h-screen px-4 sm:px-6 lg:px-8 text-center transform-gpu"
+        className="flex flex-col items-center justify-center h-screen px-4 sm:px-6 lg:px-8 text-center"
       >
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-4xl">
           We are reinventing carbon for a thriving planet
@@ -75,12 +79,16 @@ const Hero = () => {
           anywhere, at any scale.
         </p>
 
-        <a
+        <Link
           href="/contact"
-          className="px-8 py-3 bg-white text-black font-medium rounded-full hover:bg-white/90 transition-colors duration-300"
+          className={buttonVariants({
+            className: "items-center gap-1 flex px-8 py-6 text-lg",
+            variant: "outline",
+          })}
         >
-          Get in touch
-        </a>
+          Contact
+          <ArrowRight className="ml-1.5 h-10 w-10" />
+        </Link>
       </div>
     </section>
   );

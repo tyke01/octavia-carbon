@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/Hero";
+import MissionZero from "@/components/sections/MissionZero";
 import TextAndVideo from "@/components/sections/TextAndVideo";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <>
       <Hero />
       <TextAndVideo />
+      <MissionZero />
     </>
   );
 }
