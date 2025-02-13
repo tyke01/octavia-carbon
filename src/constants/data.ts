@@ -109,3 +109,48 @@ export const PROJECTS = [
     image: "/projects/oco.jpg",
   },
 ];
+
+export const NOTES = [
+  {
+    id: 1,
+    title: "The Future of Carbon Capture",
+    date: "April 15, 2025",
+    image: "/notes/lab-1.jpg",
+    href: "/lab-notes/carbon-capture",
+  },
+  {
+    id: 2,
+    title: "Sustainable Carbon Materials",
+    date: "March 22, 2025",
+    image: "/notes/lab-2.jpg",
+    href: "/lab-notes/sustainable-materials",
+  },
+  {
+    id: 3,
+    title: "Carbon Pricing Models",
+    date: "February 10, 2025",
+    image: "/notes/lab-3.jpg",
+    href: "/lab-notes/pricing-models",
+  },
+  {
+    id: 4,
+    title: "Carbon Pricing Models",
+    date: "February 10, 2025",
+    image: "/notes/lab-4.jpg",
+    href: "/lab-notes/pricing-models-2",
+  },
+  {
+    id: 5,
+    title: "Carbon Pricing Models",
+    date: "February 10, 2025",
+    image: "/notes/lab-5.png",
+    href: "/lab-notes/pricing-models-3",
+  },
+  {
+    id: 6,
+    title: "Carbon Pricing Models",
+    date: "February 10, 2025",
+    image: "/notes/lab-6.jpg",
+    href: "/lab-notes/pricing-models-4",
+  },
+];
