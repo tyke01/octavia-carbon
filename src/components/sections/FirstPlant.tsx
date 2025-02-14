@@ -4,7 +4,7 @@ import MaxWidthWrapper from "../max-width-wrapper";
 const FirstPlant = () => {
   return (
     <section className="bg-black relative z-20 text-white py-8 md:py-16 min-h-screen flex items-center">
-      <MaxWidthWrapper className="w-full">
+      <MaxWidthWrapper>
         <div className="flex flex-col md:flex-row justify-between gap-10">
           <div className="flex flex-1 flex-col justify-between md:h-[700px] mb-8 md:mb-0">
             {/* Text content */}
@@ -12,7 +12,6 @@ const FirstPlant = () => {
               Take a closer look at our first plant
             </h2>
 
-            {/* Button - shows at bottom on desktop, below text on mobile */}
             <div className="mt-auto">
               <AnimatedButton
                 href="/video"
