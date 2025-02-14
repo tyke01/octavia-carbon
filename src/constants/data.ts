@@ -154,3 +154,26 @@ export const NOTES = [
     href: "/lab-notes/pricing-models-4",
   },
 ];
+
+export const NAVLINKS = [
+  {
+    href: "/technology",
+    label: "Technology",
+  },
+  {
+    href: "/about",
+    label: "About",
+  },
+  {
+    href: "/projects",
+    label: "Projects",
+  },
+  {
+    href: "/lab-notes",
+    label: "Lab Notes",
+  },
+  {
+    href: "/careers",
+    label: "Careers",
+  },
+];
