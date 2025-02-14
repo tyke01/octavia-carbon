@@ -44,7 +44,7 @@ const TextAndVideo = () => {
   }, []);
 
   return (
-    <div
+    <section
       ref={sectionRef}
       className="bg-black relative z-20 transform-gpu min-h-screen mt-16 overflow-hidden"
     >
@@ -85,7 +85,7 @@ const TextAndVideo = () => {
           </div>
         </div>
       </MaxWidthWrapper>
-    </div>
+    </section>
   );
 };
 

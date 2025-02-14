@@ -22,7 +22,7 @@ import { ArrowIcon } from "../icons";
 
 const LabNotes = () => {
   return (
-    <div className="bg-lime-300 relative z-20 text-white py-16 min-h-screen">
+    <section className="bg-lime-300 relative z-20 text-white py-16 min-h-screen">
       <MaxWidthWrapper className="flex flex-col lg:flex-row items-center gap-16">
         <div className="lg:w-1/3">
           <Badge className="bg-white px-5 py-2 text-lg">Lab Notes</Badge>
@@ -101,7 +101,7 @@ const LabNotes = () => {
           </div>
         </div>
       </MaxWidthWrapper>
-    </div>
+    </section>
   );
 };
 
