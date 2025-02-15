@@ -1,5 +1,9 @@
 
-Mission Zero Technologies 
+Mission Zero Technologies
+
+<p align="center">
+  <img src="/screenshots/hero-shot.png" alt="Mission Zero Technologies Logo" width="200"/>
+</p>
 
 ✨ Live Demo
 Visit the live site: https://octavia-carbon-seven.vercel.app/
