@@ -24,7 +24,8 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import ReactCountryFlag from "react-country-flag";
 import { countries } from "countries-list";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPinned, MessageSquareText } from "lucide-react";
+import Link from "next/link";
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -87,7 +88,7 @@ const Contact = () => {
   }
 
   return (
-    <MaxWidthWrapper className="flex flex-col bg-black text-white">
+    <MaxWidthWrapper className="flex flex-col items-center justify-center bg-black pb-40 text-white">
       <div className="flex min-h-screen flex-col items-center justify-center text-balance">
         {/* contact hero */}
         <h1 className="mb-10 text-center text-7xl font-bold lg:text-8xl">
@@ -343,7 +344,12 @@ const Contact = () => {
                 </FormItem>
               )}
             />
-
+            <p className="text-gray-500">
+              By submitting this form you agree to our{" "}
+              <Link href="#" className="underline hover:text-gray-600">
+                Terms of Service
+              </Link>
+            </p>
             <Button className="group relative overflow-hidden rounded-full py-6 pr-12 text-xl transition-all duration-300 hover:bg-white hover:pr-14 hover:text-black">
               Submit
               <span className="absolute right-2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-black transition-all duration-300 group-hover:right-3 group-hover:bg-black group-hover:text-white">
@@ -352,6 +358,28 @@ const Contact = () => {
             </Button>
           </form>
         </Form>
+      </div>
+
+      <div className="my-6 h-[1px] w-full max-w-3xl self-center bg-gray-900" />
+
+      <div className="flex w-full max-w-3xl items-center justify-between">
+        <div className="flex gap-5">
+          <MessageSquareText />
+          <div className="flex max-w-xs flex-col items-start text-gray-500">
+            <p>For all other inquiries, please contact</p>
+            <Link href="#" className="underline hover:text-gray-600">
+              info@missionzero.tech
+            </Link>
+          </div>
+        </div>
+        {/*  */}
+        <div className="flex max-w-xs gap-5">
+          <MapPinned />
+          <Link href="#" className="text-gray-500 hover:text-gray-600">
+            115 Coventry Road, Pill Box Studio 510, London, United Kingdom, E2
+            6GG
+          </Link>
+        </div>
       </div>
     </MaxWidthWrapper>
   );
