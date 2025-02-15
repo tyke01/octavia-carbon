@@ -17,20 +17,20 @@ import { ArrowIcon } from "../icons";
 
 const LabNotes = () => {
   return (
-    <section className="bg-lime-300 relative z-20 text-white py-16 min-h-screen">
-      <MaxWidthWrapper className="flex flex-col lg:flex-row items-center gap-16">
+    <section className="relative z-20 min-h-screen bg-lime-300 py-16 text-white">
+      <MaxWidthWrapper className="flex flex-col items-center gap-16 lg:flex-row">
         <div className="lg:w-1/3">
           <Badge className="bg-white px-5 py-2 text-lg">Lab Notes</Badge>
-          <h2 className="text-black text-6xl max-w-xl mt-6 font-semibold">
+          <h2 className="mt-6 max-w-xl text-6xl font-semibold text-black">
             Notes on the carbon revolution
           </h2>
 
-          <AnimatedButton className="bg-black text-white mt-16" href="/">
+          <AnimatedButton className="mt-16 bg-black text-white" href="/">
             View More
           </AnimatedButton>
         </div>
 
-        <div className="lg:w-2/3 w-full">
+        <div className="w-full lg:w-2/3">
           <Swiper
             slidesPerView={1}
             spaceBetween={30}
@@ -49,7 +49,7 @@ const LabNotes = () => {
           >
             {NOTES.map((note) => (
               <SwiperSlide key={note.id}>
-                <div className="bg-black rounded-xl overflow-hidden shadow-lg h-full">
+                <div className="h-full overflow-hidden rounded-xl bg-black shadow-lg">
                   <div className="relative h-[400px]">
                     <Image
                       src={note.image}
@@ -71,7 +71,7 @@ const LabNotes = () => {
                         className={buttonVariants({
                           variant: "outline",
                           className:
-                            "text-white border-white hover:bg-white/10",
+                            "border-white text-white hover:bg-white/10",
                         })}
                       >
                         Read More
@@ -82,16 +82,16 @@ const LabNotes = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="flex justify-between items-center mt-8">
+          <div className="mt-8 flex items-center justify-between">
             <Button
               id="arrow-left"
-              className="text-xl bg-white text-black rotate-180"
+              className="rotate-180 bg-white text-xl text-black"
             >
-              <ArrowIcon className="text-black w-28 h-28" />
+              <ArrowIcon className="h-28 w-28 text-black" />
             </Button>
 
-            <Button id="arrow-right" className="text-xl bg-white text-black">
-              <ArrowIcon className="text-black w-28 h-28" />
+            <Button id="arrow-right" className="bg-white text-xl text-black">
+              <ArrowIcon className="h-28 w-28 text-black" />
             </Button>
           </div>
         </div>
