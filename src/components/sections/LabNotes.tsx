@@ -2,16 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import {
-  BsFillArrowLeftCircleFill,
-  BsFillArrowRightCircleFill,
-} from "react-icons/bs";
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import MaxWidthWrapper from "@/components/max-width-wrapper";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import AnimatedButton from "../animated-button";
 import { Badge } from "../ui/badge";
 import { Button, buttonVariants } from "../ui/button";
