@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,74 +8,46 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Menu } from "lucide-react";
 import { NAVLINKS } from "@/constants/data";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import AnimatedButton from "./animated-button";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const navbarRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const linkContainerRef = useRef<HTMLDivElement>(null);
   const contactBtnRef = useRef<HTMLDivElement>(null);
   const menuBtnRef = useRef<HTMLDivElement>(null);
+  const isDesktop = useRef(false);
+
+  // Check if its desktop or mobile
+  useEffect(() => {
+    const checkDesktop = () => {
+      isDesktop.current = window.innerWidth >= 768;
+      // 768px is where md: breakpoint starts for Tailwind
+    };
+
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+
+    return () => {
+      window.removeEventListener("resize", checkDesktop);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
-    };
-
-    const setupAnimations = () => {
-      const navbar = navbarRef.current;
-      const linkContainer = linkContainerRef.current;
-      const contactBtn = contactBtnRef.current;
-      const menuBtn = menuBtnRef.current;
-
-      if (navbar && linkContainer && contactBtn && menuBtn) {
-        if (isScrolled) {
-          // Hide link container and contact button
-          gsap.to([linkContainer, contactBtn], {
-            opacity: 0,
-            y: -20,
-            duration: 0.3,
-            ease: "power2.out",
-            onComplete: () => {
-              linkContainer.style.display = "none";
-              contactBtn.style.display = "none";
-            },
-          });
-
-          // Show menu button
-          gsap.to(menuBtn, {
-            display: "block",
-            opacity: 1,
-            y: 0,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-        } else {
-          // Show link container and contact button
-          gsap.set([linkContainer, contactBtn], { display: "block" });
-          gsap.to([linkContainer, contactBtn], {
-            opacity: 1,
-            y: 0,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-
-          // Hide menu button
-          gsap.to(menuBtn, {
-            opacity: 0,
-            y: -20,
-            duration: 0.3,
-            ease: "power2.out",
-            onComplete: () => {
-              menuBtn.style.display = "none";
-            },
-          });
-        }
-      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -82,10 +55,12 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isScrolled]);
+  }, []);
 
-  // Add this separate effect to run setupAnimations when isScrolled changes
+  // Separate useEffect to run Animations when isScrolled changes (only on mobile screens)
   useEffect(() => {
+    if (!isDesktop.current) return;
+
     const setupAnimations = () => {
       const navbar = navbarRef.current;
       const linkContainer = linkContainerRef.current;
@@ -141,12 +116,15 @@ const Navbar = () => {
     setupAnimations();
   }, [isScrolled]);
 
+  // Toggling the link container in desktop screens.
   const toggleDesktopMenu = () => {
+    if (!isDesktop.current) return;
+
     setIsMenuOpen(!isMenuOpen);
     const linkContainer = linkContainerRef.current;
 
     if (linkContainer) {
-      if (!isMenuOpen) {
+      if (!isMenuOpen && isDesktop) {
         gsap.to(linkContainer, {
           opacity: 1,
           y: 0,
@@ -188,11 +166,10 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Menu Button (appears when scrolled) */}
+          {/* Menu Button (appears when scrolled on desktop) */}
           <div
             ref={menuBtnRef}
-            className="absolute right-4 top-4 hidden md:hidden"
-            style={{ opacity: 0 }}
+            className="absolute right-4 top-5 hidden opacity-0 md:hidden"
           >
             <Button
               variant="ghost"
@@ -207,7 +184,7 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div ref={linkContainerRef} className="hidden md:block">
-            <div className="rounded-full bg-gray-300 px-8 py-2">
+            <div className="rounded-full bg-gray-300 px-8 py-6">
               <ul className="flex items-center space-x-8">
                 {NAVLINKS.map((link, index) => (
                   <li key={index}>
@@ -225,21 +202,30 @@ const Navbar = () => {
 
           {/* Contact Button - Desktop */}
           <div ref={contactBtnRef} className="hidden md:block">
-            <Button asChild className="rounded-full">
-              <Link href="/contact">Contact Us</Link>
-            </Button>
+            <AnimatedButton href="/contact">Contact</AnimatedButton>
           </div>
 
           {/* Mobile Navigation */}
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="relative z-20">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="relative z-20 rounded-full bg-gray-300"
+                >
                   <Menu className="h-6 w-6" />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[80vw] max-w-sm">
+
+              <SheetContent
+                side="right"
+                className="w-[80vw] max-w-sm bg-black text-white"
+              >
+                <SheetHeader>
+                  <SheetTitle>Mission Zero</SheetTitle>
+                </SheetHeader>
                 <div className="mt-12 flex flex-col space-y-6">
                   <ul className="flex flex-col space-y-4">
                     {NAVLINKS.map((link, index) => (
@@ -253,9 +239,7 @@ const Navbar = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button asChild className="w-full rounded-full">
-                    <Link href="/contact">Contact Us</Link>
-                  </Button>
+                  <AnimatedButton href="/contact">Contact us</AnimatedButton>
                 </div>
               </SheetContent>
             </Sheet>
