@@ -1,13 +1,11 @@
 "use client";
 
-import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import Link from "next/link";
+import { useRef } from "react";
 
-import { ArrowRight } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
+import AnimatedButton from "@/components/animated-button";
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -46,11 +44,11 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="min-h-screen w-full overflow-hidden sticky top-0"
+      className="sticky top-0 min-h-screen w-full overflow-hidden"
     >
       {/* Background Video */}
       <video
-        className="absolute top-0 left-0 w-full h-full object-cover"
+        className="absolute left-0 top-0 h-full w-full object-cover"
         autoPlay
         muted
         loop
@@ -68,27 +66,17 @@ const Hero = () => {
       {/* Content Container */}
       <div
         ref={contentRef}
-        className="flex flex-col items-center justify-center h-screen px-4 sm:px-6 lg:px-8 text-center"
+        className="flex h-screen flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8"
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 max-w-4xl">
+        <h1 className="mb-6 max-w-4xl text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl">
           We are reinventing carbon for a thriving planet
         </h1>
 
-        <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl">
+        <p className="mb-8 max-w-2xl text-lg text-white/90 sm:text-xl">
           We develop technology to efficiently recover CO₂ from our atmosphere —
           anywhere, at any scale.
         </p>
-
-        <Link
-          href="/contact"
-          className={buttonVariants({
-            className: "items-center gap-1 flex px-8 py-6 text-lg",
-            variant: "outline",
-          })}
-        >
-          Contact
-          <ArrowRight className="ml-1.5 h-10 w-10" />
-        </Link>
+        <AnimatedButton href="/contact">Contact us</AnimatedButton>
       </div>
     </section>
   );
