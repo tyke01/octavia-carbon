@@ -40,7 +40,7 @@ const Carousel = () => {
           updateOnWindowResize={true}
           touchRatio={1.5}
           modules={[Pagination, Autoplay]}
-          className="swiper"
+          className="swiper !overflow-visible"
           watchSlidesProgress={true}
         >
           {PARTNERS.map((partner, index) => (
@@ -48,14 +48,16 @@ const Carousel = () => {
               key={index}
               className="swiper-slide pointer-events-none flex items-center justify-center"
             >
-              <Image
-                src={partner.path}
-                alt={partner.name}
-                width={48}
-                height={48}
-                className="pointer-events-none h-48 w-48 rounded-md object-contain shadow-md transition-transform duration-300"
-                loading="eager"
-              />
+              <div className="flex w-full justify-center px-4">
+                <Image
+                  src={partner.path}
+                  alt={partner.name}
+                  width={48}
+                  height={48}
+                  className="pointer-events-none h-48 w-48 rounded-md object-contain shadow-md transition-transform duration-300"
+                  loading="eager"
+                />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
