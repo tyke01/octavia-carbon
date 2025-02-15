@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MaxWidthWrapper from "./max-width-wrapper";
+import Image from "next/image";
 
 const Carousel = () => {
   return (
@@ -41,17 +42,18 @@ const Carousel = () => {
           modules={[Pagination, Autoplay]}
           className="swiper"
           watchSlidesProgress={true}
-          
         >
           {PARTNERS.map((partner, index) => (
             <SwiperSlide
               key={index}
-              className="swiper-slide flex justify-center items-center pointer-events-none"
+              className="swiper-slide pointer-events-none flex items-center justify-center"
             >
-              <img
+              <Image
                 src={partner.path}
                 alt={partner.name}
-                className="w-48 h-48 object-contain rounded-md shadow-md transition-transform duration-300 pointer-events-none"
+                width={48}
+                height={48}
+                className="pointer-events-none h-48 w-48 rounded-md object-contain shadow-md transition-transform duration-300"
                 loading="eager"
               />
             </SwiperSlide>
