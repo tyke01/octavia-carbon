@@ -1,11 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import Carousel from "@/components/carousel";
-import MaxWidthWrapper from "../max-width-wrapper";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Carousel from "@/components/carousel";
+import MaxWidthWrapper from "@/components/max-width-wrapper";
+import { SlideIn } from "@/components/slide-in";
 
 const TextAndVideo = () => {
   const sectionRef = useRef(null);
@@ -39,41 +40,45 @@ const TextAndVideo = () => {
           end: "top 20%",
           scrub: true,
         },
-      }
+      },
     );
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="bg-black relative z-20 transform-gpu min-h-screen mt-16 overflow-hidden"
+      className="relative z-20 mt-16 min-h-screen transform-gpu overflow-hidden bg-black"
     >
       <div ref={carouselRef} className="transform-gpu">
         <Carousel />
       </div>
 
       <MaxWidthWrapper>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 items-center gap-16 md:grid-cols-2">
           <div ref={textRef} className="transform-gpu">
-            <h2 className="text-3xl md:text-6xl font-bold text-gray-100 mb-6">
-              From carbon waste to climate value
-            </h2>
-            <p className="text-lg text-gray-300">
-              The CO₂ in our air can be much more than just harmful waste. In
-              fact, it can make almost anything you can think of. If we can turn
-              the atmosphere into the world&apos;s default carbon source, we can
-              quit fossil fuels and rebalance our climate. At Mission Zero we
-              are already deploying the keystone technology for the post-fossil
-              era.
-            </p>
+            <SlideIn>
+              <h2 className="mb-6 text-3xl font-bold text-gray-100 md:text-6xl">
+                From carbon waste to climate value
+              </h2>
+            </SlideIn>
+            <SlideIn>
+              <p className="text-lg text-gray-300">
+                The CO₂ in our air can be much more than just harmful waste. In
+                fact, it can make almost anything you can think of. If we can
+                turn the atmosphere into the world&apos;s default carbon source,
+                we can quit fossil fuels and rebalance our climate. At Mission
+                Zero we are already deploying the keystone technology for the
+                post-fossil era.
+              </p>
+            </SlideIn>
           </div>
 
           <div
             ref={videoRef}
-            className="relative aspect-video rounded-lg overflow-hidden shadow-xl transform-gpu"
+            className="relative aspect-video transform-gpu overflow-hidden rounded-lg shadow-xl"
           >
             <video
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
               autoPlay
               controls
               muted

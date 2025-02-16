@@ -7,13 +7,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import MaxWidthWrapper from "@/components/max-width-wrapper";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import AnimatedButton from "../animated-button";
-import { Badge } from "../ui/badge";
-import { Button, buttonVariants } from "../ui/button";
+import AnimatedButton from "@/components/animated-button";
+import { Badge } from "@/components/ui/badge";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 import { NOTES } from "@/constants/data";
 import "swiper/css";
-import { ArrowIcon } from "../icons";
+import { ArrowIcon } from "@/components/icons";
+import { SlideIn } from "@/components/slide-in";
 
 const LabNotes = () => {
   return (
@@ -21,13 +22,17 @@ const LabNotes = () => {
       <MaxWidthWrapper className="flex flex-col items-center gap-16 lg:flex-row">
         <div className="lg:w-1/3">
           <Badge className="bg-white px-5 py-2 text-lg">Lab Notes</Badge>
-          <h2 className="mt-6 max-w-xl text-6xl font-semibold text-black">
-            Notes on the carbon revolution
-          </h2>
+          <SlideIn>
+            <h2 className="mt-6 max-w-xl text-6xl font-semibold text-black">
+              Notes on the carbon revolution
+            </h2>
+          </SlideIn>
 
-          <AnimatedButton className="mt-16 bg-black text-white" href="/">
-            View More
-          </AnimatedButton>
+          <SlideIn>
+            <AnimatedButton className="mt-16 bg-black text-white" href="/">
+              View More
+            </AnimatedButton>
+          </SlideIn>
         </div>
 
         <div className="w-full lg:w-2/3">
